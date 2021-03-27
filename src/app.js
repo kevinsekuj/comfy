@@ -94,6 +94,7 @@ const showFilms = obj => {
 		}
 		updateList = false;
 	} else {
+		let i = 0;
 		for (let el of obj) {
 			let li = document.createElement("li");
 			let img = document.createElement("img");
@@ -104,9 +105,11 @@ const showFilms = obj => {
 			);
 			img.height = 200;
 			img.width = 146;
-			// li.textContent = el;
+
+			img.setAttribute("id", i)
 			li.appendChild(img);
 			moviesDiv.appendChild(li);
+			i++;
 		}
 	}
 };
@@ -199,7 +202,7 @@ document.addEventListener("DOMContentLoaded", e => {
 setTimeout(() => {
 	select.forEach(select =>
 		select.addEventListener("click", function () {
-			console.log("hi");
+			current(preloaded[start + parseInt(select.getAttribute('id'))])
 		})
 	);
 }, 2100);
