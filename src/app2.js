@@ -1,5 +1,5 @@
 import userTime from "./app.js";
-export { checkTemp };
+export { checkTemp, genres };
 
 const genres = {
 	35: "Comedy",

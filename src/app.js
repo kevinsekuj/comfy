@@ -1,5 +1,5 @@
-import { checkTemp } from "./app2.js";
-import { APIKeys } from "./index.js";
+import { checkTemp, genres } from "./app2.js";
+import { APIKeys } from "./keys.js";
 
 const userTime = new Date();
 export default userTime;
@@ -106,7 +106,7 @@ const showFilms = obj => {
 			img.height = 200;
 			img.width = 146;
 
-			img.setAttribute("id", i)
+			img.setAttribute("id", i);
 			li.appendChild(img);
 			moviesDiv.appendChild(li);
 			i++;
@@ -116,6 +116,7 @@ const showFilms = obj => {
 
 const current = async cur => {
 	displayElements(cur);
+
 	let key = await getTrailer(cur.id);
 
 	document
@@ -144,9 +145,9 @@ const getTrailer = async id => {
 };
 
 const displayElements = cur => {
-	const background = document.querySelector(".right-wrapper-overlay");
+	const background = document.querySelector(".right-wrapper-background");
 	const poster = document.querySelector(".poster-large");
-	const synopsys = document.querySelector(".info-panel > p");
+	const overview = document.querySelector(".info-panel > p");
 	const title = document.querySelector(".info-panel > h2");
 	const genre = document.getElementById("genre");
 	const date = document.getElementById("date");
@@ -155,12 +156,15 @@ const displayElements = cur => {
 
 	background.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${cur.backdrop})`;
 	poster.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${cur.poster})`;
-	synopsys.textContent = cur.overview;
+
+	overview.textContent = cur.overview;
 	title.textContent = cur.title;
-	date.textContent = `「${cur.date.slice(0, 4)}」`;
-	genre.textContent = cur.genre;
+
+	date.textContent = `(${cur.date.slice(0, 4)})`;
 	lang.textContent = cur.lang.toUpperCase();
 	rating.textContent = `${cur.rating}/10`;
+
+	genre.textContent = `${genres[cur.genre[0]]}, ${genres[cur.genre[1]]}`;
 
 	if (cur.rating > 4 && cur.rating < 7) {
 		rating.style.color = "yellow";
@@ -202,7 +206,7 @@ document.addEventListener("DOMContentLoaded", e => {
 setTimeout(() => {
 	select.forEach(select =>
 		select.addEventListener("click", function () {
-			current(preloaded[start + parseInt(select.getAttribute('id'))])
+			current(preloaded[start + parseInt(select.getAttribute("id"))]);
 		})
 	);
 }, 2100);
