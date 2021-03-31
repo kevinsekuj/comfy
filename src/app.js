@@ -61,7 +61,7 @@ const moviesList = async (genre, page) => {
 	let set = new Set(moviesArray.map(JSON.stringify));
 	preloaded = shuffle(Array.from(set).map(JSON.parse));
 
-	showFilms(preloaded.slice(0, 8));
+	showFilms(preloaded.slice(0, 9));
 	current(preloaded[0]);
 };
 
@@ -120,7 +120,7 @@ const current = async cur => {
 	let key = await getTrailer(cur.id);
 
 	document
-		.querySelector(".player")
+		.getElementById("player")
 		.setAttribute("src", `https://www.youtube.com/embed/${key}`);
 };
 
@@ -145,35 +145,44 @@ const getTrailer = async id => {
 };
 
 const displayElements = cur => {
-	const background = document.querySelector(".right-wrapper-background");
-	const poster = document.querySelector(".poster-large");
-	const overview = document.querySelector(".info-panel > p");
-	const title = document.querySelector(".info-panel > h2");
-	const genre = document.getElementById("genre");
+	// const background = document.querySelector(".right-wrapper-background");
+	// const poster = document.querySelector(".poster-large");
+	const title = document.getElementById("title");
 	const date = document.getElementById("date");
 	const rating = document.getElementById("rating");
 	const lang = document.getElementById("lang");
+	const genre = document.getElementById("genre");
+	const overview = document.querySelector(".section .box .block > p");
 
-	background.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${cur.backdrop})`;
-	poster.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${cur.poster})`;
+	// background.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${cur.backdrop})`;
+	// poster.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${cur.poster})`;
 
-	overview.textContent = cur.overview;
-	title.textContent = cur.title;
-
-	date.textContent = `(${cur.date.slice(0, 4)})`;
+	date.textContent = `${cur.date.slice(0, 4)}`;
 	lang.textContent = cur.lang.toUpperCase();
-	rating.textContent = `${cur.rating}/10`;
-
 	genre.textContent = `${genres[cur.genre[0]]}, ${genres[cur.genre[1]]}`;
 
-	if (cur.rating > 4 && cur.rating < 7) {
-		rating.style.color = "yellow";
-	} else if (cur.rating < 4 && cur.rating !== 0) {
-		rating.style.color = "red";
-	} else if (cur.rating === 0) {
-		rating.textContent = " ";
+	if (!cur.rating || cur.rating == 0) {
+		rating.textContent = "N/A";
+		rating.style.color = "black";
 	} else {
-		rating.style.color = "lightgreen";
+		rating.textContent = `${cur.rating}/10`;
+
+		if (cur.rating > 4 && cur.rating < 7) {
+			rating.style.color = "yellow";
+		} else if (cur.rating <= 4 && cur.rating !== 0) {
+			rating.style.color = "red";
+		} else if (cur.rating === 0) {
+			rating.textContent = " ";
+		} else {
+			rating.style.color = "green";
+		}
+	}
+
+	overview.textContent = cur.overview;
+	if (cur.title.length >= 45) {
+		title.textContent = cur.title.slice(0, 38) + "... ";
+	} else {
+		title.textContent = cur.title;
 	}
 };
 
@@ -200,7 +209,7 @@ var prevPage = [];
 document.addEventListener("DOMContentLoaded", e => {
 	setTimeout(() => {
 		select = document.querySelectorAll("img");
-	}, 2000);
+	}, 500);
 });
 
 setTimeout(() => {
@@ -209,64 +218,63 @@ setTimeout(() => {
 			current(preloaded[start + parseInt(select.getAttribute("id"))]);
 		})
 	);
-}, 2100);
+}, 510);
 
-// todo limit  keypresses
-const nextButton = document.getElementById("next");
+// const nextButton = document.getElementById("next");
 
-nextButton.addEventListener("click", function () {
-	updateList = true;
-	if (end + 8 >= preloaded.length) {
-		prevPage = [];
-		prevPage.push(start, end);
-		page += 1;
-		start = 0;
-		end = 8;
-		moviesList(savedFilms, page);
-	} else {
-		start += 8;
-		end += 8;
-		showFilms(preloaded.slice(start, end));
-	}
-	current(preloaded[start]);
-});
+// nextButton.addEventListener("click", function () {
+// 	updateList = true;
+// 	if (end + 9 >= preloaded.length) {
+// 		prevPage = [];
+// 		prevPage.push(start, end);
+// 		page += 1;
+// 		start = 0;
+// 		end = 9;
+// 		moviesList(savedFilms, page);
+// 	} else {
+// 		start += 9;
+// 		end += 9;
+// 		showFilms(preloaded.slice(start, end));
+// 	}
+// 	current(preloaded[start]);
+// });
 
-const previousButton = document.getElementById("prev");
+// const previousButton = document.getElementById("prev");
 
-previousButton.addEventListener("click", function () {
-	updateList = true;
-	if (start === 0 && page > 1) {
-		page -= 1;
-		start = prevPage[0];
-		end = prevPage[1];
-		moviesList(savedFilms, page);
-	} else if (start === 0) {
-		console.log("You're already on the first page.");
-	} else {
-		start -= 8;
-		end -= 8;
-		showFilms(preloaded.slice(start, end));
-	}
-	current(preloaded[start]);
-});
+// previousButton.addEventListener("click", function () {
+// 	updateList = true;
+// 	if (start === 0 && page > 1) {
+// 		page -= 1;
+// 		start = prevPage[0];
+// 		end = prevPage[1];
+// 		moviesList(savedFilms, page);
+// 	} else if (start === 0) {
+// 		console.log("You're already on the first page.");
+// 	} else {
+// 		start -= 9;
+// 		end -= 9;
+// 		showFilms(preloaded.slice(start, end));
+// 	}
+// 	current(preloaded[start]);
+// });
 
-const resetButton = document.getElementById("reset");
+// const resetButton = document.getElementById("reset");
 
-resetButton.addEventListener("click", function () {
-	if (page === 1 && start === 0) {
-		console.log("You've already reset the selection.");
-	} else if (page == 1) {
-		start = 0;
-		end = 8;
-		page = 1;
-		updateList = true;
-		showFilms(preloaded.slice(start, end));
-	} else {
-		start = 0;
-		end = 8;
-		page = 1;
-		updateList = true;
-		moviesList(savedFilms, page);
-	}
-	current(preloaded[0]);
-});
+// resetButton.addEventListener("click", function () {
+// 	if (page === 1 && start === 0) {
+// 		console.log("You've already reset the selection.");
+// 	} else if (page == 1) {
+// 		start = 0;
+// 		end = 9;
+// 		page = 1;
+// 		updateList = true;
+// 		showFilms(preloaded.slice(start, end));
+// 	} else {
+// 		start = 0;
+// 		end = 9;
+// 		page = 1;
+// 		updateList = true;
+// 		moviesList(savedFilms, page);
+// 	}
+// 	current(preloaded[0]);
+// });
