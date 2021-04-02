@@ -8,6 +8,4 @@ docstrings <br/>
 
 refactoring/cleanup <br/>
 
-semantic elements <br/>
-
 actual readme
