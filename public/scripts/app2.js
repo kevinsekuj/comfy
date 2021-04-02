@@ -50,7 +50,7 @@ const checkTemp = (temp, weatherData) => {
 	} else {
 		if (userTime.getHours() >= 18 || userTime.getHours() <= 6) {
 			if (temp >= 65) {
-				night("warm", "clear");
+				return night("warm", "clear");
 			} else {
 				return night("cold", "clear");
 			}
