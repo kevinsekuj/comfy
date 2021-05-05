@@ -58,7 +58,8 @@ img:hover {
 	margin-top: 0px;
 	margin-left: 115px;
 	height: 140px;
-	min-width: 15%;
+	min-width: 309px;
+	max-width: 400px;
 }
 
 #next {

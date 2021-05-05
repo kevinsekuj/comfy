@@ -199,8 +199,13 @@ const unlock = () => {
 document.addEventListener("DOMContentLoaded", e => {
 	setTimeout(() => {
 		select = document.querySelectorAll("img");
-	}, 2100);
+	}, 2500);
 });
+
+// oops
+if (!select) {
+	select = document.querySelectorAll("img");
+}
 
 setTimeout(() => {
 	select.forEach(select =>
