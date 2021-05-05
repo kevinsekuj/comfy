@@ -23,7 +23,7 @@ app.get("/", (req, res) => {
 app.get("/weather/:latlon", async (req, res) => {
 	const [lat, lon] = req.params.latlon.split(",");
 	const response = await fetch(
-		`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${process.env.WEATHER_KEY}`
+		`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${process.env.WEATHER_KEY}`
 	);
 	const jsonData = await response.json();
 	res.json(jsonData);
