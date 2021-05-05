@@ -199,7 +199,7 @@ const unlock = () => {
 document.addEventListener("DOMContentLoaded", e => {
 	setTimeout(() => {
 		select = document.querySelectorAll("img");
-	}, 1000);
+	}, 2100);
 });
 
 setTimeout(() => {
