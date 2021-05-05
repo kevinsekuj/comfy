@@ -1,18 +1,21 @@
-require("dotenv").config();
+if (process.env.NODE_ENV !== "production") {
+	require("dotenv").config();
+}
 const express = require("express");
 const app = express();
 const path = require("path");
 const fetch = require("node-fetch");
+const port = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, "public")));
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.listen(3000, () => {
-	console.log("Listening on port 3000.");
+app.listen(port, () => {
+	console.log(`Listening on port ${port}`);
 });
 
+// used sendFile since no templating engine to be parsed
 app.get("/", (req, res) => {
 	res.sendFile(__dirname, "index.html");
 });

@@ -1,90 +1,93 @@
-body {
-  background-color: hsl(0, 0%, 8%);
-  min-height: 101.5vh;
+body,
+html {
+	background-color: hsl(0, 0%, 8%);
+}
+
+:root {
+	color-scheme: dark;
 }
 
 #left-column {
-  margin: 20px 0 0 20px;
+	margin: 20px 0 0 40px;
 }
 
 #right-column {
-  margin: 20px 0 0 35px;
+	margin: 20px 0 0 35px;
 }
 
 .list-items {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	list-style: none;
 }
 img {
-  border-radius: 8px;
-  transition: transform 0.2s;
-  transition-delay: 0.05s;
+	border-radius: 8px;
+	transition: transform 0.2s;
+	transition-delay: 0.05s;
 }
 
 img:hover {
-  transform: scale(1.5);
+	transform: scale(1.33);
+	cursor: pointer;
 }
 
 #left-column {
-  background-color: hsl(0, 0%, 8%);
+	background-color: hsl(0, 0%, 8%);
 }
 
 #bottom-wrapper {
-  display: flex;
-  justify-content: space-between;
-  margin-left: 20px;
-  max-width: 90%;
-  background-color: hsl(0, 0%, 8%);
+	display: flex;
+	justify-content: space-between;
+	margin-left: 20px;
+	max-width: 90%;
+	background-color: hsl(0, 0%, 8%);
+	padding-top: 0px;
 }
 
 .box .box {
-  color: whitesmoke;
-  margin-top: -20px;
-  margin-left: 10px;
-  min-width: 64.5%;
+	color: whitesmoke;
+	margin-left: 10px;
+	min-width: 64.5%;
 }
 
 #controls {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  margin-top: -40px;
-  margin-left: 115px;
-  height: 140px;
-  min-width: 15%;
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+	margin-top: 0px;
+	margin-left: 115px;
+	height: 140px;
+	min-width: 15%;
 }
 
 #next {
-  padding-right: 30px;
-  padding-left: 30px;
+	padding-right: 30px;
+	padding-left: 30px;
 }
 #prev {
-  padding-right: 30px;
-  padding-left: 30px;
-  margin-bottom: 10px;
+	padding-right: 30px;
+	padding-left: 30px;
+	margin-bottom: 10px;
 }
 #genre {
-  font-weight: 900;
-  font-size: 1.1em;
-  color: rgb(12, 182, 182);
+	font-weight: 900;
+	font-size: 1.1em;
+	color: rgb(12, 182, 182);
 }
 
 .footer {
-  background-color: whitesmoke;
-}
-/* 
-#github {
-	background: url(/images/linkedin-brands.svg) no-repeat;
-	background-size: contain;
-	width: 60px;
-	z-index: 1;
+	background-color: whitesmoke;
 }
 
-#linkedin {
-	background: url(/images/github-square-brands.svg) no-repeat;
-	background-size: contain;
-	width: 60px;
-	z-index: -1;
-} */
+.title {
+	color: whitesmoke;
+}
+
+#desc {
+	max-width: 1080px;
+}
+
+#right-column.loading {
+	filter: blur(2px);
+}

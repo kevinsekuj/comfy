@@ -137,8 +137,6 @@ const getTrailer = async id => {
 };
 
 const displayElements = cur => {
-	// const background = document.querySelector(".right-wrapper-background");
-	// const poster = document.querySelector(".poster-large");
 	const title = document.getElementById("title");
 	const date = document.getElementById("date");
 	const rating = document.getElementById("rating");
@@ -146,15 +144,14 @@ const displayElements = cur => {
 	const genre = document.getElementById("genre");
 	const overview = document.querySelector(".box .box > p");
 
-	// background.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${cur.backdrop})`;
-	// poster.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${cur.poster})`;
-
 	date.textContent = `${cur.date.slice(0, 4)}`;
 	lang.textContent = cur.lang.toUpperCase();
 
 	if (genre) {
 		if (cur.genre[0] && cur.genre[1]) {
-			genre.textContent = `${genres[cur.genre[0]]}, ${genres[cur.genre[1]]}`;
+			genre.textContent = `${genres[cur.genre[0]]}, ${
+				genres[cur.genre[1]]
+			}`;
 		} else {
 			genre.textContent = `${genres[cur.genre[0]]}`;
 		}
@@ -162,7 +159,7 @@ const displayElements = cur => {
 
 	if (!cur.rating || cur.rating == 0) {
 		rating.textContent = "N/A";
-		rating.style.color = "black";
+		rating.style.color = "white";
 	} else {
 		rating.textContent = `${cur.rating}/10`;
 
@@ -185,25 +182,19 @@ const displayElements = cur => {
 	}
 };
 
-//
-var select = document.querySelectorAll("img");
-var preloaded = [];
-var savedFilms = [];
-var updateList = false;
-var page = 1;
-var start = 0;
-var end = 9;
-var prevPage = [];
+let select = document.querySelectorAll("img");
+let preloaded = [];
+let savedFilms = [];
+let updateList = false;
+let page = 1;
+let start = 0;
+let end = 9;
+let prevPage = [];
+let locked = false;
 
-// DOM interactions and event handlers
-
-// const splashScreen = document.querySelector(".splash");
-
-// document.addEventListener("DOMContentLoaded", e => {
-// 	setTimeout(() => {
-// 		splashScreen.classList.add("display-none");
-// 	}, 2000);
-// });
+const unlock = () => {
+	locked = false;
+};
 
 document.addEventListener("DOMContentLoaded", e => {
 	setTimeout(() => {
@@ -222,39 +213,64 @@ setTimeout(() => {
 const nextButton = document.getElementById("next");
 
 nextButton.addEventListener("click", function () {
-	updateList = true;
-	if (end + 9 >= preloaded.length) {
-		prevPage = [];
-		prevPage.push(start, end);
-		page += 1;
-		start = 0;
-		end = 9;
-		moviesList(savedFilms, page);
-	} else {
-		start += 9;
-		end += 9;
-		showFilms(preloaded.slice(start, end));
+	if (!locked) {
+		updateList = true;
+		if (end + 9 >= preloaded.length) {
+			prevPage = [];
+			prevPage.push(start, end);
+			page += 1;
+			start = 0;
+			end = 9;
+			moviesList(savedFilms, page);
+		} else {
+			start += 9;
+			end += 9;
+			showFilms(preloaded.slice(start, end));
+		}
+
+		current(preloaded[start]);
+		locked = true;
+		document.getElementById("right-column").classList.add("loading");
+
+		setTimeout(() => {
+			unlock();
+		}, 500);
+		setTimeout(() => {
+			document.getElementById("right-column").classList.remove("loading");
+		}, 400);
 	}
-	current(preloaded[start]);
 });
 
 const previousButton = document.getElementById("prev");
 
 previousButton.addEventListener("click", function () {
-	updateList = true;
-	if (start === 0 && page > 1) {
-		page -= 1;
-		start = prevPage[0];
-		end = prevPage[1];
-		moviesList(savedFilms, page);
-	} else if (start === 0) {
-		console.log("You're already on the first page.");
-	} else {
-		start -= 9;
-		end -= 9;
-		showFilms(preloaded.slice(start, end));
+	if (!locked) {
+		updateList = true;
+		if (start === 0 && page > 1) {
+			page -= 1;
+			start = prevPage[0];
+			end = prevPage[1];
+			moviesList(savedFilms, page);
+		} else if (start === 0) {
+			console.log("You're already on the first page.");
+		} else {
+			start -= 9;
+			end -= 9;
+			showFilms(preloaded.slice(start, end));
+		}
+
+		current(preloaded[start]);
+		locked = true;
+		document.getElementById("right-column").classList.add("loading");
+
+		setTimeout(() => {
+			unlock();
+		}, 500);
+
+		setTimeout(() => {
+			document.getElementById("right-column").classList.remove("loading");
+		}, 400);
 	}
-	current(preloaded[start]);
 });
 
 const resetButton = document.getElementById("reset");
