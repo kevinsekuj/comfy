@@ -25,12 +25,12 @@
 - HTML5
 
 ## Development
-This project leverages the OpenWeather API along with JavaScript's in navigator interface to fetch a user's local weather, mapping the data to an object containing various genre IDs. A request is made to the TMDb API with the matching IDs and ~80-100 results are returned depending on request parameters.  The result objects aree excised of duplicates and randomly shuffled with a Fisher-Yates sorting algorithm. 
+This project leverages the OpenWeather API along with JavaScript's in navigator interface to fetch a user's local weather, mapping the data to an object containing various genre IDs. A request is made to the TMDb API with the matching IDs and ~80-100 results are returned depending on request parameters.  The result objects are excised of duplicates and randomly shuffled with a Fisher-Yates sorting algorithm. 
 
 Scripting is done in JavaScript with vanilla DOM interaction whereas a Node-Express backend leverages API calls and serves static HTML to the user.
 
 
-<span><em>this web application is mostly optimized for usage on 720p+ resolutions</em></small>
+<span><em>this web application is mostly optimized for usage on 720p+ resolution</em></small>
 
 
 ## License
