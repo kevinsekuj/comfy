@@ -20,7 +20,9 @@
 - [Node.js](https://nodejs.org/en/) 
 - [Express.js](https://expressjs.com/) 
 - [Bulma](https://bulma.io)
-- JavaScript, CSS, HTML5
+- JavaScript
+- CSS
+- HTML5
 
 ## Development
 This project leverages the OpenWeather API along with JavaScript's in navigator interface to fetch a user's local weather, mapping the data to an object containing various genre IDs. A request is made to the TMDb API with the matching IDs and ~80-100 results are returned depending on request parameters.  The result objects aree excised of duplicates and randomly shuffled with a Fisher-Yates sorting algorithm. 
