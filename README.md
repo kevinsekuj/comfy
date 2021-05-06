@@ -4,8 +4,10 @@
 
 <b>comfy</b> is a web application which suggests film and animation suggestions along with embedded trailers in real-time based on your local weather and time of day.
 
-![webapp usage](gif.gif)
 
+## Demo
+
+![Demo](/img/reduced.gif)
 
 ## Features
 
