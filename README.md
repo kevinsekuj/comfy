@@ -15,7 +15,7 @@
 - Instantly embed YouTube trailers for the selected film without having to search for them
 - Near-infinite forward and backward scrolling as well as reset functionality
 
-## Tech Stack
+## Technologies
 
 - [Node.js](https://nodejs.org/en/) 
 - [Express.js](https://expressjs.com/) 
