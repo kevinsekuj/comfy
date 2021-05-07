@@ -237,7 +237,7 @@ nextButton.addEventListener("click", function () {
 		}, 500);
 		setTimeout(() => {
 			document.getElementById("right-column").classList.remove("loading");
-		}, 400);
+		}, 500);
 	}
 });
 
@@ -269,7 +269,7 @@ previousButton.addEventListener("click", function () {
 
 		setTimeout(() => {
 			document.getElementById("right-column").classList.remove("loading");
-		}, 400);
+		}, 500);
 	}
 });
 
