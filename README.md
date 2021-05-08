@@ -1,6 +1,6 @@
 # comfy //  [maxcomfy.dev](https://maxcomfy.dev) 
 
-<em>be sure to allow location services!</em>
+<em>be sure to allow location services and refresh!</em>
 
 <b>comfy</b> is a web application which suggests film and animation suggestions along with embedded trailers in real-time based on your local weather and time of day.
 
