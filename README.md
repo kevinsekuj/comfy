@@ -30,7 +30,7 @@ This project leverages the OpenWeather API along with JavaScript's in navigator 
 Scripting is done in JavaScript with vanilla DOM interaction whereas a Node-Express backend leverages API calls and serves static HTML to the user.
 
 
-<span><em>this web application is mostly optimized for usage on 720p+ resolution</em></small>
+<span><em>this web application is ideally used on a 1080p+ resolution</em></small>
 
 
 ## License
