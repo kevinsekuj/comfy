@@ -15,7 +15,7 @@ const geoError = GeolocationPositionError => {
 		"Error: " +
 			GeolocationPositionError.message +
 			"\n \n" +
-			"Please allow location services and refresh"
+			"This app fetches local weather/time to diplay suggestions. Please enable location services and refresh."
 	);
 };
 navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
