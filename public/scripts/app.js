@@ -206,19 +206,21 @@ const unlock = () => {
 	locked = false;
 };
 
-document.addEventListener("DOMContentLoaded", e => {
-	setTimeout(() => {
-		select = document.querySelectorAll("img");
-	}, 2500);
-});
+if (geoSuccess) {
+	document.addEventListener("DOMContentLoaded", e => {
+		setTimeout(() => {
+			select = document.querySelectorAll("img");
+		}, 2500);
+	});
 
-setTimeout(() => {
-	select.forEach(select =>
-		select.addEventListener("click", function () {
-			current(preloaded[start + parseInt(select.getAttribute("id"))]);
-		})
-	);
-}, 2600);
+	setTimeout(() => {
+		select.forEach(select =>
+			select.addEventListener("click", function () {
+				current(preloaded[start + parseInt(select.getAttribute("id"))]);
+			})
+		);
+	}, 2600);
+}
 
 const nextButton = document.getElementById("next");
 
