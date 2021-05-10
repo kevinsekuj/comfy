@@ -3,11 +3,21 @@ import { checkTemp, genres } from "./app2.js";
 const userTime = new Date();
 export default userTime;
 
-navigator.geolocation.getCurrentPosition(position => {
-	let lat = position.coords.latitude;
-	let lon = position.coords.longitude;
+const geoSuccess = GeolocationPosition => {
+	let lat = GeolocationPosition.coords.latitude;
+	let lon = GeolocationPosition.coords.longitude;
 	getWeather(lat, lon);
-});
+};
+
+const geoError = GeolocationPositionError => {
+	alert(
+		"Error: " +
+			GeolocationPositionError.message +
+			"\n \n" +
+			"Please allow location services and refresh"
+	);
+};
+navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
 
 const getWeather = async (lat, lon) => {
 	let response = await fetch(`/weather/${lat},${lon}`);
