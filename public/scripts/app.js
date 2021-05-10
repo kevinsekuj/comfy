@@ -7,6 +7,7 @@ const geoSuccess = GeolocationPosition => {
 	let lat = GeolocationPosition.coords.latitude;
 	let lon = GeolocationPosition.coords.longitude;
 	getWeather(lat, lon);
+	selectImages();
 };
 
 const geoError = GeolocationPositionError => {
@@ -192,7 +193,7 @@ const displayElements = cur => {
 	}
 };
 
-let select = document.querySelectorAll("img");
+let select;
 let preloaded = [];
 let savedFilms = [];
 let updateList = false;
@@ -206,21 +207,17 @@ const unlock = () => {
 	locked = false;
 };
 
-if (geoSuccess) {
-	document.addEventListener("DOMContentLoaded", e => {
-		setTimeout(() => {
-			select = document.querySelectorAll("img");
-		}, 2500);
-	});
-
+const selectImages = () => {
 	setTimeout(() => {
+		select = document.querySelectorAll("img");
+
 		select.forEach(select =>
 			select.addEventListener("click", function () {
 				current(preloaded[start + parseInt(select.getAttribute("id"))]);
 			})
 		);
-	}, 2600);
-}
+	}, 1500);
+};
 
 const nextButton = document.getElementById("next");
 
