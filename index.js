@@ -15,7 +15,6 @@ app.listen(port, () => {
 	console.log(`Listening on port ${port}`);
 });
 
-// used sendFile since no templating engine to be parsed
 app.get("/", (req, res) => {
 	res.sendFile(__dirname, "index.html");
 });
@@ -34,7 +33,8 @@ app.get("/movies/:pageid", async (req, res) => {
 	if (!page) {
 		page = 0;
 	}
-	const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.MOVIE_KEY}&language=en-US
+	const response =
+		await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.MOVIE_KEY}&language=en-US
 	&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${id}`);
 
 	const jsonData = await response.json();
