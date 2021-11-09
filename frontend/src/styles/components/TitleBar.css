@@ -1,0 +1,5 @@
+.titlebar {
+  display: flex;
+  justify-content: space-evenly;
+  max-height: 100px;
+}

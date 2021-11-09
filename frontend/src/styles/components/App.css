@@ -1,0 +1,13 @@
+.upper-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.lower-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 0.25%;
+  margin-left: 1.1%;
+}

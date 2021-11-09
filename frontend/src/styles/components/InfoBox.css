@@ -1,0 +1,18 @@
+.infobox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.infobox p {
+  margin-top: 10px;
+  font-size: 1.75em;
+  text-align: center;
+}
+
+.infobox h5 {
+  font-weight: lighter;
+  text-align: center;
+  padding-top: 10px;
+  margin-bottom: 0px;
+}

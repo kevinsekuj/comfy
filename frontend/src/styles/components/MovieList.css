@@ -1,0 +1,17 @@
+.right-container {
+  background-color: #363636;
+  margin-top: 1%;
+  margin-left: 4%;
+  min-width: 30%;
+  max-width: 30%;
+  border-radius: 8px;
+}
+
+.movie-container {
+  margin-top: 9%;
+  padding: 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  list-style: none;
+}
