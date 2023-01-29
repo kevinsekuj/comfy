@@ -1,7 +1,7 @@
 import functions from '@google-cloud/functions-framework';
 import createLookupTable from './createLookupTable.js';
 
-const ALLOWED_ORIGINS = ['http://localhost:3000'];
+const ALLOWED_ORIGINS = ['http://localhost:3000', 'https://comfy.vercel.app/'];
 
 functions.http('getLookupTable', async (req, res) => {
   const { origin } = req.headers;
