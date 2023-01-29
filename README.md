@@ -6,7 +6,7 @@ A fun web application which suggests films and animation genres based on your lo
 
 ## Live Link
 
-[comfy.movie.app](https://comfy.movie.app)
+[comfy.vercel.app](https://comfy.vercel.app)
 
 ## Features
 
@@ -21,7 +21,7 @@ A fun web application which suggests films and animation genres based on your lo
 
 - [React.js](https://reactjs.org/)
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-- [CSS3](https://www.w3.org/Style/CSS/Overview.en.html)
+- [Vercel](https://vercel.com/)
 - [MaterialUI](https://mui.com/)
 - [axios](https://www.npmjs.com/package/axios)
 
