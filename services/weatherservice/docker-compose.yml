@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  weather-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/home/node/app/src
+    container_name: weather-service
+    expose:
+      - '4000'
+    ports:
+      - '4000:4000'
