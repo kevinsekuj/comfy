@@ -2,7 +2,7 @@
 
 A fun web application which suggests films and animation genres based on your local weather and time of day.
 
-![Demo](/img/reduced.gif)
+![Demo](/img/compressed.gif)
 
 ## Live Link
 
@@ -67,6 +67,7 @@ A fun web application which suggests films and animation genres based on your lo
    - From root directory:  
      `$ cd services/`
    - See the [media-catalog-service README](services/mediacatalogservice/README.md) and the [weather-service README](services/weatherservice/README.md) for installation and development instructions
+4. Deploy `serverless-functions/index.js` to a cloud function provider of your choice, or set it up as a basic HTTP server.
 
 ## Quick Start
 
