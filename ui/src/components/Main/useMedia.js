@@ -7,8 +7,9 @@ export default function useMedia() {
   const genreIdTableRef = useRef(null);
   const userLocalWeatherRef = useRef(null);
   const genreIdArrayRef = useRef(null);
-  const [isButtonClickDisabled, setIsButtonClickDisabled] = useState(false);
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [isButtonClickDisabled, setIsButtonClickDisabled] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -60,6 +61,7 @@ export default function useMedia() {
       try {
         // on initial component load or page change
         if (currentLoadedMedia.totalResults === null || currentLoadedMedia.page !== currentPage) {
+          setIsLoading(true);
           if (
             [genreIdTableRef.current, userLocalWeatherRef.current, genreIdArrayRef.current].some(
               (element) => element === null,
@@ -88,7 +90,7 @@ export default function useMedia() {
           });
 
           setHighlightedMedia(media[0]);
-
+          setIsLoading(false);
           // on media select
         } else {
           const response = await fetchSingleMedia(highlightedMedia.id);
@@ -110,5 +112,6 @@ export default function useMedia() {
     errorMessage,
     setErrorMessage,
     isButtonClickDisabled,
+    isLoading,
   };
 }
