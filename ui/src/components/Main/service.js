@@ -25,7 +25,7 @@ async function fetchMediaArray(genreIds, page = undefined) {
   if (SessionStorage.has(STORED_GENRE_ID_KEY)) {
     processedIds = SessionStorage.get(STORED_GENRE_ID_KEY);
   } else {
-    processedIds = shuffleArray(genreIds).slice(0, 3).join(',');
+    processedIds = shuffleArray(genreIds).slice(0, 2).join(',');
     SessionStorage.put(STORED_GENRE_ID_KEY, processedIds);
   }
   if (page && SessionStorage.has(page)) return SessionStorage.get(page);

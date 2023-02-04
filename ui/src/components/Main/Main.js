@@ -17,6 +17,7 @@ export default function Main() {
     handleShuffleMediaSelection,
     isButtonClickDisabled,
     isLoading,
+    currentPage,
   } = useMedia();
 
   return (
@@ -80,6 +81,7 @@ export default function Main() {
 
                 <Box id='pagination-container' display='flex' justifyContent='center'>
                   <Pagination
+                    page={currentPage ?? 1}
                     count={currentLoadedMedia.totalPages ?? DEFAULT_PAGINATION_COUNT_FALLBACK}
                     color='secondary'
                     variant='outlined'

@@ -113,5 +113,6 @@ export default function useMedia() {
     setErrorMessage,
     isButtonClickDisabled,
     isLoading,
+    currentPage,
   };
 }
